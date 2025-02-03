@@ -10,6 +10,7 @@ func _ready():
 	pass
 
 
-func handle_movement():
+func handle_movement() -> Vector2:
 	player.velocity = input.direction * movement_speed
 	player.move_and_slide()
+	return input.direction

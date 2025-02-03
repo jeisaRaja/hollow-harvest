@@ -3,9 +3,11 @@ extends CharacterBody2D
 
 @export var player_camera: PackedScene
 @export var movement: PlayerMovementComponent
+@export var anim: AnimationPlayer
 
 var owner_id = 1
 var camera_instance: Camera2D
+var last_dir: Vector2
 
 
 func _enter_tree():
@@ -27,7 +29,20 @@ func _process(_delta):
 func _physics_process(_delta):
 	if owner_id != multiplayer.get_unique_id():
 		return
-	movement.handle_movement()
+
+	var dir = movement.handle_movement()
+
+	if dir == Vector2.ZERO:
+		if last_dir.x != 0:
+			anim.play("idle_right" if last_dir.x > 0 else "idle_left")
+		else:
+			anim.play("idle_down" if last_dir.y > 0 else "idle_up")
+	else:
+		if dir.x != 0:
+			anim.play("walk_right" if dir.x > 0 else "walk_left")
+		else:
+			anim.play("walk_down" if dir.y > 0 else "walk_up")
+		last_dir = dir
 
 
 func update_camera_position():
