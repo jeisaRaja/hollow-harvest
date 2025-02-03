@@ -6,15 +6,16 @@
 atlas = ExtResource("1_lcr1a")
 region = Rect2(0.389095, 0, 47.6109, 64)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8ufqv"]
-radius = 6.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pwsp"]
+size = Vector2(10, 4)
 
 [node name="Tree_1" type="Sprite2D"]
-position = Vector2(1, -32)
+position = Vector2(-1, -18)
 texture = SubResource("AtlasTexture_pdry3")
+offset = Vector2(1, -14)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-1, 29)
-shape = SubResource("CircleShape2D_8ufqv")
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_5pwsp")
