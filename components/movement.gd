@@ -1,7 +1,6 @@
 class_name PlayerMovementComponent
 extends Node
 
-@export var input: InputComponent
 @export var movement_speed: int
 @export var player: Player
 
@@ -11,6 +10,6 @@ func _ready():
 
 
 func handle_movement() -> Vector2:
-	player.velocity = input.direction * movement_speed
+	player.velocity = PlayerInput.direction * movement_speed
 	player.move_and_slide()
-	return input.direction
+	return PlayerInput.direction

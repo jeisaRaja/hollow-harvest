@@ -41,3 +41,14 @@ func handle_animation_dir():
 		animation_dir = directions[dir_index]
 
 	character.anim.play(animation_name + animation_dir)
+
+
+func get_hitbox_pos(face_right_pos: Vector2):
+	if character.last_dir.x > 0:
+		return face_right_pos
+	if character.last_dir.x < 0:
+		return Vector2(-face_right_pos.x, face_right_pos.y)
+	if character.last_dir.y > 0:
+		return Vector2(0, face_right_pos.x)
+	else:
+		return Vector2(0, -face_right_pos.x)

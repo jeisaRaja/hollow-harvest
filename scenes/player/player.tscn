@@ -1,16 +1,17 @@
-[gd_scene load_steps=21 format=3 uid="uid://dgtaent0adqah"]
+[gd_scene load_steps=27 format=3 uid="uid://dgtaent0adqah"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_2wf3d"]
 [ext_resource type="Texture2D" uid="uid://bis3jw7ymw50a" path="res://arts/player.png" id="1_fo3sf"]
 [ext_resource type="PackedScene" uid="uid://foo4k54k71f2" path="res://scenes/player/player_camera.tscn" id="2_e6xf5"]
 [ext_resource type="Script" path="res://components/movement.gd" id="2_gmcet"]
-[ext_resource type="Script" path="res://components/player_input.gd" id="3_uv3a3"]
 [ext_resource type="Script" path="res://components/state_machine/state_machine.gd" id="6_aw664"]
 [ext_resource type="Script" path="res://components/state_machine/idle.gd" id="7_3ywso"]
+[ext_resource type="Script" path="res://components/state_machine/chop.gd" id="8_gm067"]
 [ext_resource type="Script" path="res://components/state_machine/walk.gd" id="8_u7wb8"]
+[ext_resource type="PackedScene" uid="uid://byegkdy3vj8re" path="res://components/hit_component.tscn" id="9_icibe"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4xb7o"]
-size = Vector2(12, 2)
+[sub_resource type="CircleShape2D" id="CircleShape2D_hsbfp"]
+radius = 4.0
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_77v5m"]
 properties/0/path = NodePath(".:position")
@@ -176,9 +177,81 @@ tracks/0/keys = {
 "values": [4, 5, 6, 7]
 }
 
+[sub_resource type="Animation" id="Animation_nh5jb"]
+resource_name = "chop_up"
+length = 0.4
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [33, 34]
+}
+
+[sub_resource type="Animation" id="Animation_nvsnd"]
+resource_name = "chop_down"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [30, 31]
+}
+
+[sub_resource type="Animation" id="Animation_2m166"]
+resource_name = "chop_right"
+length = 0.4
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [27, 28]
+}
+
+[sub_resource type="Animation" id="Animation_43jwr"]
+resource_name = "chop_left"
+length = 0.4
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [24, 25]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aw2v0"]
 _data = {
 "RESET": SubResource("Animation_awljg"),
+"chop_down": SubResource("Animation_nvsnd"),
+"chop_left": SubResource("Animation_43jwr"),
+"chop_right": SubResource("Animation_2m166"),
+"chop_up": SubResource("Animation_nh5jb"),
 "idle_down": SubResource("Animation_xk5l6"),
 "idle_left": SubResource("Animation_larv5"),
 "idle_right": SubResource("Animation_y12qg"),
@@ -189,6 +262,9 @@ _data = {
 "walk_up": SubResource("Animation_2lfa2")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ta2gn"]
+radius = 5.09902
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement", "anim")]
 y_sort_enabled = true
 position = Vector2(0, -16)
@@ -197,6 +273,7 @@ script = ExtResource("1_2wf3d")
 player_camera = ExtResource("2_e6xf5")
 movement = NodePath("MovementComponent")
 anim = NodePath("AnimationPlayer")
+current_tool = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
@@ -204,17 +281,13 @@ texture = ExtResource("1_fo3sf")
 hframes = 36
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 15)
-shape = SubResource("RectangleShape2D_4xb7o")
+position = Vector2(0, 13)
+shape = SubResource("CircleShape2D_hsbfp")
 
-[node name="MovementComponent" type="Node" parent="." node_paths=PackedStringArray("input", "player")]
+[node name="MovementComponent" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("2_gmcet")
-input = NodePath("../PlayerInputComponent")
 movement_speed = 100
 player = NodePath("..")
-
-[node name="PlayerInputComponent" type="Node" parent="."]
-script = ExtResource("3_uv3a3")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_77v5m")
@@ -237,3 +310,15 @@ animation_name = "idle"
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource("8_u7wb8")
 animation_name = "walk"
+
+[node name="Chop" type="Node" parent="StateMachine" node_paths=PackedStringArray("hit_component_collision_shape")]
+script = ExtResource("8_gm067")
+hit_component_collision_shape = NodePath("../../HitComponent/CollisionShape2D")
+animation_name = "chop"
+
+[node name="HitComponent" parent="." instance=ExtResource("9_icibe")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitComponent"]
+position = Vector2(15, 5)
+shape = SubResource("CircleShape2D_ta2gn")
+debug_color = Color(0.70448, 0.430343, 0.620524, 0.42)

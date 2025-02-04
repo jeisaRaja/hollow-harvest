@@ -32,17 +32,6 @@ func _physics_process(_delta):
 	if dir != Vector2.ZERO:
 		last_dir = dir
 
-	# if dir == Vector2.ZERO:
-	# 	if last_dir.x != 0:
-	# 		anim.play("idle_right" if last_dir.x > 0 else "idle_left")
-	# 	else:
-	# 		anim.play("idle_down" if last_dir.y > 0 else "idle_up")
-	# else:
-	# 	if dir.x != 0:
-	# 		anim.play("walk_right" if dir.x > 0 else "walk_left")
-	# 	else:
-	# 		anim.play("walk_down" if dir.y > 0 else "walk_up")
-
 
 func update_camera_position():
 	camera_instance.global_position = global_position

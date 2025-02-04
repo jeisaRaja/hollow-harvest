@@ -1,22 +1,51 @@
-[gd_scene load_steps=4 format=3 uid="uid://dv1tw8jny5a7h"]
+[gd_scene load_steps=11 format=3 uid="uid://dv1tw8jny5a7h"]
 
 [ext_resource type="Texture2D" uid="uid://cfqaj8xdjvf1t" path="res://arts/trees.png" id="1_lcr1a"]
+[ext_resource type="Shader" path="res://scenes/objects/tree_shake.gdshader" id="1_yhmqj"]
+[ext_resource type="PackedScene" uid="uid://dmy0b6ck6f7lb" path="res://components/hurt_component.tscn" id="2_7otqi"]
+[ext_resource type="Script" path="res://scenes/objects/tree_1.gd" id="2_xtnx1"]
+[ext_resource type="PackedScene" uid="uid://bkf8tfam7wxdn" path="res://components/damage_component.tscn" id="3_mqsi2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iay77"]
+resource_local_to_scene = true
+shader = ExtResource("1_yhmqj")
+shader_parameter/shake_intensity = 0.0
+shader_parameter/shake_speed = 20.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pdry3"]
 atlas = ExtResource("1_lcr1a")
-region = Rect2(0.389095, 0, 47.6109, 64)
+region = Rect2(0.389095, 0, 63.6109, 72)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pwsp"]
-size = Vector2(10, 4)
+[sub_resource type="CircleShape2D" id="CircleShape2D_t3hlm"]
+radius = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stdqp"]
+size = Vector2(10, 20)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_bj8ud"]
 
 [node name="Tree_1" type="Sprite2D"]
-position = Vector2(-1, -22)
+material = SubResource("ShaderMaterial_iay77")
+position = Vector2(0, -25)
 texture = SubResource("AtlasTexture_pdry3")
-offset = Vector2(1, -10)
+offset = Vector2(1, -9)
+script = ExtResource("2_xtnx1")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(0, 4)
+position = Vector2(1, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 16)
-shape = SubResource("RectangleShape2D_5pwsp")
+position = Vector2(-1, 15)
+shape = SubResource("CircleShape2D_t3hlm")
+
+[node name="HurtComponent" parent="." instance=ExtResource("2_7otqi")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
+position = Vector2(0, 15)
+shape = SubResource("RectangleShape2D_stdqp")
+debug_color = Color(0.731954, 0.401012, 0.653894, 0.42)
+
+[node name="DamageComponent" parent="." instance=ExtResource("3_mqsi2")]
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_bj8ud")
