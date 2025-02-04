@@ -10,11 +10,12 @@ region = Rect2(0.389095, 0, 47.6109, 64)
 size = Vector2(10, 4)
 
 [node name="Tree_1" type="Sprite2D"]
-position = Vector2(-1, -18)
+position = Vector2(-1, -22)
 texture = SubResource("AtlasTexture_pdry3")
-offset = Vector2(1, -14)
+offset = Vector2(1, -10)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 16)
