@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://27tjvv4hx3ea"]
+
+[ext_resource type="Texture2D" uid="uid://badkoywtaauc3" path="res://arts/log.png" id="1_a03pe"]
+[ext_resource type="PackedScene" uid="uid://bjfgnwf8246se" path="res://components/collectable_component.tscn" id="2_3pmmb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v41xx"]
+atlas = ExtResource("1_a03pe")
+region = Rect2(2, 4, 28, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jmqgh"]
+size = Vector2(4, 14)
+
+[node name="Log" type="Sprite2D"]
+texture = SubResource("AtlasTexture_v41xx")
+offset = Vector2(0, -3.985)
+
+[node name="CollectableComponent" parent="." instance=ExtResource("2_3pmmb")]
+position = Vector2(0, -6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableComponent"]
+position = Vector2(8.74228e-08, 2)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_jmqgh")
