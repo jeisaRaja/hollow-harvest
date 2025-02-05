@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Lobby="*res://globals/lobby.gd"
 PlayerInput="*res://globals/player_input.gd"
+DayNightCycleManager="*res://globals/day_night_cycle_manager.gd"
 
 [display]
 

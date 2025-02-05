@@ -9,6 +9,7 @@ const MAX_CONNECTIONS = 2
 
 var players = {}
 var player_info = {"name": "Name"}
+var game_started: bool = false
 
 
 func _ready():

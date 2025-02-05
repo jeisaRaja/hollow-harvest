@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://dwee5a4nroc6w"]
+[gd_scene load_steps=10 format=4 uid="uid://dwee5a4nroc6w"]
 
 [ext_resource type="PackedScene" uid="uid://dgtaent0adqah" path="res://scenes/player/player.tscn" id="1_gqwfa"]
 [ext_resource type="Script" path="res://scenes/level.gd" id="1_w708o"]
 [ext_resource type="Texture2D" uid="uid://d2qv2a06dvj51" path="res://arts/terrain.png" id="4_o7vgp"]
+[ext_resource type="PackedScene" uid="uid://dntfrdwy8j6ik" path="res://components/day_night_cycle_component.tscn" id="5_2fshf"]
 [ext_resource type="PackedScene" uid="uid://dv1tw8jny5a7h" path="res://scenes/objects/tree_1.tscn" id="5_u780p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rc4xj"]
@@ -311,3 +312,5 @@ tile_set = SubResource("TileSet_ju6nc")
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAOAAsAAQAAAAAAAQAPAA8AAQAAAAAAAQASABAAAQAAAAAAAQASAAsAAQAAAAAAAQAVAAwAAQAAAAAAAQA=")
 tile_set = SubResource("TileSet_5b8k1")
+
+[node name="DayNightCycleComponent" parent="." instance=ExtResource("5_2fshf")]

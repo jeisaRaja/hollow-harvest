@@ -9,9 +9,11 @@ extends Node
 @export var status_label: Label
 @export var not_connected_ui: BoxContainer
 @export var host_ui: BoxContainer
+@export var on_game_ui: BoxContainer
 
 
 func _ready():
+	on_game_ui.hide()
 	host_ui.hide()
 	multiplayer.connection_failed.connect(_on_connection_failed)
 	multiplayer.connected_to_server.connect(_on_connected_to_server)
@@ -36,12 +38,21 @@ func _on_connected_to_server():
 func _on_start_pressed():
 	change_level.call_deferred(level_scene)
 	hide_menu.rpc()
+	show_on_game_ui.rpc()
+	Lobby.game_started = true
+
+
+@rpc("call_local", "authority", "reliable")
+func show_on_game_ui():
+	on_game_ui.show()
 
 
 func _on_join_pressed():
 	Lobby.join_game(ip_line_edit.text)
 	status_label.text = "Connecting..."
 	not_connected_ui.hide()
+	if Lobby.game_started:
+		on_game_ui.show()
 
 
 func _on_host_pressed():
@@ -58,7 +69,10 @@ func _on_connection_failed():
 
 @rpc("call_local", "authority", "reliable")
 func hide_menu():
-	ui.hide()
+	host_ui.hide()
+	not_connected_ui.hide()
+	on_game_ui.hide()
+	status_label.hide()
 
 
 func show_menu():
