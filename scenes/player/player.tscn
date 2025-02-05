@@ -14,16 +14,16 @@
 radius = 4.0
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_77v5m"]
-properties/0/path = NodePath(".:position")
+properties/0/path = NodePath("AnimationPlayer:current_animation")
 properties/0/spawn = true
 properties/0/replication_mode = 1
-properties/1/path = NodePath("AnimationPlayer:current_animation")
+properties/1/path = NodePath("HitComponent/CollisionShape2D:position")
 properties/1/spawn = true
 properties/1/replication_mode = 1
-properties/2/path = NodePath("HitComponent/CollisionShape2D:position")
+properties/2/path = NodePath("HitComponent/CollisionShape2D:disabled")
 properties/2/spawn = true
 properties/2/replication_mode = 1
-properties/3/path = NodePath("HitComponent/CollisionShape2D:disabled")
+properties/3/path = NodePath(".:position")
 properties/3/spawn = true
 properties/3/replication_mode = 1
 

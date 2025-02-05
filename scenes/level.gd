@@ -3,21 +3,22 @@ extends Node2D
 @export var players_container: Node2D
 @export var player_scene: PackedScene
 @export var spawn_points: Array[Node2D]
+@export var player_spawner: MultiplayerSpawner
 
 var next_spawn_point_index: int = 0
 
 
 func _ready():
+	player_spawner.spawn_function = spawn_player
 	if not multiplayer.is_server():
 		return
 
 	multiplayer.peer_connected.connect(add_player)
 	multiplayer.peer_disconnected.connect(delete_player)
 
+	add_player(1)
 	for id in multiplayer.get_peers():
 		add_player(id)
-
-	add_player(1)
 
 
 func _exit_tree():
@@ -29,11 +30,15 @@ func _exit_tree():
 	multiplayer.peer_disconnected.disconnect(delete_player)
 
 
-func add_player(id):
-	var player_instance = player_scene.instantiate() as Node2D
-	player_instance.position = get_spawn_point()
+func spawn_player(id):
+	var player_instance = player_scene.instantiate() as Player
 	player_instance.name = str(id)
-	players_container.add_child(player_instance)
+	player_instance.position = get_spawn_point()
+	return player_instance
+
+
+func add_player(id):
+	player_spawner.spawn(id)
 
 
 func delete_player(id):

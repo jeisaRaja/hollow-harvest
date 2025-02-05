@@ -20,7 +20,6 @@ func _on_hurt(hit_damage: int) -> void:
 
 func _on_max_damaged_reached():
 	add_log_scene.rpc.call_deferred()
-	queue_free()
 
 
 @rpc("any_peer", "call_local", "reliable")
@@ -28,3 +27,4 @@ func add_log_scene() -> void:
 	var log_instance = log_scene.instantiate() as Node2D
 	log_instance.global_position = global_position
 	get_parent().add_child(log_instance)
+	queue_free()

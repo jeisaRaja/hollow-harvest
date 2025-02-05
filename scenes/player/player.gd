@@ -13,6 +13,7 @@ func _enter_tree():
 	set_multiplayer_authority(owner_id)
 	if owner_id != multiplayer.get_unique_id():
 		return
+	print("player id ", owner_id, "position after authority", position)
 	set_up_camera()
 
 
@@ -35,6 +36,12 @@ func _physics_process(_delta):
 
 func update_camera_position():
 	camera_instance.global_position = global_position
+
+
+@rpc("any_peer", "call_local")
+func set_player_position(_position: Vector2):
+	position = _position
+	print(position)
 
 
 func set_up_camera():

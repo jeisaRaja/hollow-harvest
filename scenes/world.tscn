@@ -273,12 +273,13 @@ scenes/1/scene = ExtResource("5_u780p")
 [sub_resource type="TileSet" id="TileSet_5b8k1"]
 sources/1 = SubResource("TileSetScenesCollectionSource_qr80m")
 
-[node name="World" type="Node2D" node_paths=PackedStringArray("players_container", "spawn_points")]
+[node name="World" type="Node2D" node_paths=PackedStringArray("players_container", "spawn_points", "player_spawner")]
 y_sort_enabled = true
 script = ExtResource("1_w708o")
 players_container = NodePath("Players/PlayersContainer")
 player_scene = ExtResource("1_gqwfa")
 spawn_points = [NodePath("Players/Spawn_1"), NodePath("Players/Spawn_2")]
+player_spawner = NodePath("Players/MultiplayerSpawner")
 
 [node name="Players" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -292,7 +293,7 @@ spawn_path = NodePath("../PlayersContainer")
 spawn_limit = 2
 
 [node name="Spawn_1" type="Marker2D" parent="Players"]
-position = Vector2(147, 151)
+position = Vector2(146, 151)
 
 [node name="Spawn_2" type="Marker2D" parent="Players"]
 position = Vector2(181, 151)

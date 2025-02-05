@@ -1,0 +1,107 @@
+[gd_scene load_steps=9 format=3 uid="uid://ftdtgk17m5yy"]
+
+[ext_resource type="Texture2D" uid="uid://m270abpwidgs" path="res://arts/style.png" id="1_27e32"]
+[ext_resource type="FontFile" uid="uid://bu815t3v5ayso" path="res://arts/Varnished.ttf" id="2_hxre5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qn02"]
+atlas = ExtResource("1_27e32")
+region = Rect2(33, 4, 30, 23)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ltk4s"]
+texture = SubResource("AtlasTexture_6qn02")
+texture_margin_left = 5.0
+texture_margin_top = 7.0
+texture_margin_right = 5.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f481x"]
+atlas = ExtResource("1_27e32")
+region = Rect2(1, 5, 30, 22)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ji0rf"]
+texture = SubResource("AtlasTexture_f481x")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(0, 0, 30, 22)
+
+[sub_resource type="Theme" id="Theme_uvf62"]
+default_font = ExtResource("2_hxre5")
+Button/styles/normal = SubResource("StyleBoxTexture_ltk4s")
+DayNightCounterPanel/base_type = &"PanelContainer"
+DayNightCounterPanel/styles/panel = SubResource("StyleBoxTexture_ji0rf")
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("2_hxre5")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3jxe"]
+atlas = ExtResource("1_27e32")
+region = Rect2(74, 11, 9, 11)
+
+[node name="DayNightPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_uvf62")
+
+[node name="DayPanel" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 62.0
+offset_bottom = 27.0
+theme_type_variation = &"DayNightCounterPanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="DayPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 0
+
+[node name="Label" type="Label" parent="DayPanel/MarginContainer"]
+layout_mode = 2
+text = "DAY 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimePanel" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_top = 30.0
+offset_right = 62.0
+offset_bottom = 57.0
+theme_type_variation = &"DayNightCounterPanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="TimePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 0
+
+[node name="Label" type="Label" parent="TimePanel/MarginContainer"]
+layout_mode = 2
+text = "12:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NormalSpeedButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 59.0
+offset_right = 24.0
+offset_bottom = 81.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/NormalSpeedButton"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 17.0
+offset_bottom = 18.0
+texture = SubResource("AtlasTexture_h3jxe")
