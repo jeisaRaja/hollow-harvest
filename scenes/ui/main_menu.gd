@@ -7,9 +7,9 @@ extends Node
 @export var ui: Control
 @export var ip_line_edit: LineEdit
 @export var status_label: Label
-@export var not_connected_ui: BoxContainer
-@export var host_ui: BoxContainer
-@export var on_game_ui: BoxContainer
+@export var not_connected_ui: Control
+@export var host_ui: Control
+@export var on_game_ui: Control
 
 
 func _ready():

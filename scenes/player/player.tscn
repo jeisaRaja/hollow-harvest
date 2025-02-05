@@ -271,14 +271,14 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_ta2gn"]
 radius = 5.09902
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement", "anim")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement", "hit_component", "anim")]
 y_sort_enabled = true
 collision_layer = 2
 script = ExtResource("1_2wf3d")
 player_camera = ExtResource("2_e6xf5")
 movement = NodePath("MovementComponent")
+hit_component = NodePath("HitComponent")
 anim = NodePath("AnimationPlayer")
-current_tool = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)

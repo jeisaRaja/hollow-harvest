@@ -3,6 +3,7 @@ extends Character
 
 @export var player_camera: PackedScene
 @export var movement: PlayerMovementComponent
+@export var hit_component: HitComponent
 
 var owner_id = 1
 var camera_instance: Camera2D
@@ -13,8 +14,16 @@ func _enter_tree():
 	set_multiplayer_authority(owner_id)
 	if owner_id != multiplayer.get_unique_id():
 		return
-	print("player id ", owner_id, "position after authority", position)
 	set_up_camera()
+
+
+func _ready():
+	ToolManager.tool_selected.connect(_on_tool_selected)
+
+
+func _on_tool_selected(tool: DataTypes.Tools):
+	current_tool = tool
+	hit_component.current_tool = tool
 
 
 func _process(_delta):
