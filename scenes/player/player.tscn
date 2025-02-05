@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dgtaent0adqah"]
+[gd_scene load_steps=28 format=3 uid="uid://dgtaent0adqah"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_2wf3d"]
 [ext_resource type="Texture2D" uid="uid://bis3jw7ymw50a" path="res://arts/player.png" id="1_fo3sf"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://components/state_machine/chop.gd" id="8_gm067"]
 [ext_resource type="Script" path="res://components/state_machine/walk.gd" id="8_u7wb8"]
 [ext_resource type="PackedScene" uid="uid://byegkdy3vj8re" path="res://components/hit_component.tscn" id="9_icibe"]
+[ext_resource type="Script" path="res://scenes/player/detect_blocking.gd" id="10_1jtuv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hsbfp"]
 radius = 4.0
@@ -329,3 +330,12 @@ position = Vector2(0, -13)
 position = Vector2(15, 5)
 shape = SubResource("CircleShape2D_ta2gn")
 debug_color = Color(0.70448, 0.430343, 0.620524, 0.42)
+
+[node name="DetectBlocking" type="RayCast2D" parent="."]
+position = Vector2(0, -30)
+target_position = Vector2(0, 35)
+collision_mask = 128
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("10_1jtuv")
