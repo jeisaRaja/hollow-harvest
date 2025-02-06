@@ -7,3 +7,9 @@ enum Tools {
 	TillGround,
 	WaterCrops,
 }
+
+enum ItemType {
+	Common,
+	Equipable,
+	Consumable,
+}

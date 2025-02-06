@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dmy0b6ck6f7lb" path="res://components/hurt_component.tscn" id="2_7otqi"]
 [ext_resource type="Script" path="res://scenes/objects/tree_1.gd" id="2_xtnx1"]
 [ext_resource type="PackedScene" uid="uid://bkf8tfam7wxdn" path="res://components/damage_component.tscn" id="3_mqsi2"]
-[ext_resource type="PackedScene" uid="uid://27tjvv4hx3ea" path="res://scenes/objects/log.tscn" id="4_n7440"]
+[ext_resource type="PackedScene" uid="uid://27tjvv4hx3ea" path="res://scenes/items/log.tscn" id="4_n7440"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iay77"]
 resource_local_to_scene = true

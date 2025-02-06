@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://bvmdbohn6224w"]
+
+[ext_resource type="Script" path="res://resources/item_data.gd" id="1_mmxq6"]
+[ext_resource type="Texture2D" uid="uid://b3ss6vq2ki1om" path="res://scenes/items/small_objects.tres" id="2_g0ben"]
+
+[resource]
+script = ExtResource("1_mmxq6")
+name = "Log"
+description = "A Log"
+stackable = true
+texture = ExtResource("2_g0ben")
