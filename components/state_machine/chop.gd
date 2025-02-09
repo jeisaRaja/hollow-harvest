@@ -17,8 +17,6 @@ func enter():
 
 
 func physics_process(_delta: float):
-	# if PlayerInput.use_tool():
-	# 	character.anim.play(animation_name + animation_dir)
 	if character.anim.is_playing():
 		return
 	transitioned.emit(self, "idle")
