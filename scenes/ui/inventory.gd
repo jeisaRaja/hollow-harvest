@@ -6,12 +6,20 @@ const slot = preload("res://scenes/ui/slot.tscn")
 
 
 func _ready():
-	var inv_data = preload("res://components/inventory.tres")
-	populate_item_grid(inv_data.slot_datas)
+	print("ready in inventory")
+	GameplayEvent.player_added.connect(_on_player_added)
+
+
+func _on_player_added():
+	print("called")
+	set_player_inventory_data(GameplayEvent.player.inventory_data)
+
+
+func set_player_inventory_data(inventory_data: InventoryData):
+	populate_item_grid(inventory_data.slot_datas)
 
 
 func populate_item_grid(slot_datas: Array[SlotData]) -> void:
-	print(slot_datas)
 	for child in item_grid.get_children():
 		child.queue_free()
 

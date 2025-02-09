@@ -1,9 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://dgtaent0adqah"]
+[gd_scene load_steps=29 format=3 uid="uid://dgtaent0adqah"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_2wf3d"]
 [ext_resource type="Texture2D" uid="uid://bis3jw7ymw50a" path="res://arts/player.png" id="1_fo3sf"]
 [ext_resource type="PackedScene" uid="uid://foo4k54k71f2" path="res://scenes/player/player_camera.tscn" id="2_e6xf5"]
 [ext_resource type="Script" path="res://components/movement.gd" id="2_gmcet"]
+[ext_resource type="Resource" uid="uid://bay5f6xdw48je" path="res://components/inventory.tres" id="3_rrumk"]
 [ext_resource type="Script" path="res://components/state_machine/state_machine.gd" id="6_aw664"]
 [ext_resource type="Script" path="res://components/state_machine/idle.gd" id="7_3ywso"]
 [ext_resource type="Script" path="res://components/state_machine/chop.gd" id="8_gm067"]
@@ -279,6 +280,7 @@ script = ExtResource("1_2wf3d")
 player_camera = ExtResource("2_e6xf5")
 movement = NodePath("MovementComponent")
 hit_component = NodePath("HitComponent")
+inventory_data = ExtResource("3_rrumk")
 anim = NodePath("AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

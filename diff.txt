@@ -1,0 +1,164 @@
+diff --git a/components/inventory.tres b/components/inventory.tres
+index c1e963a..02e9dc8 100644
+--- a/components/inventory.tres
++++ b/components/inventory.tres
+@@ -13,8 +13,8 @@ quantity = 2
+ [sub_resource type="Resource" id="Resource_83bky"]
+ script = ExtResource("2_l2i1e")
+ item_data = ExtResource("4_e7pk6")
+-quantity = 1
++quantity = 3
+ 
+ [resource]
+ script = ExtResource("1_3kb85")
+-slot_datas = Array[ExtResource("2_l2i1e")]([SubResource("Resource_8n2vj"), null, null, SubResource("Resource_83bky"), null, null, null, null, null, null])
++slot_datas = Array[ExtResource("2_l2i1e")]([SubResource("Resource_8n2vj"), null, null, SubResource("Resource_83bky"), null, null, null, null, null, null, null, null])
+diff --git a/components/state_machine/chop.gd b/components/state_machine/chop.gd
+index 4c3d539..1504545 100644
+--- a/components/state_machine/chop.gd
++++ b/components/state_machine/chop.gd
+@@ -17,8 +17,6 @@ func enter():
+ 
+ 
+ func physics_process(_delta: float):
+-	# if PlayerInput.use_tool():
+-	# 	character.anim.play(animation_name + animation_dir)
+ 	if character.anim.is_playing():
+ 		return
+ 	transitioned.emit(self, "idle")
+diff --git a/resources/slot_data.gd b/resources/slot_data.gd
+index 99af1ec..78cec1a 100644
+--- a/resources/slot_data.gd
++++ b/resources/slot_data.gd
+@@ -4,4 +4,12 @@ class_name SlotData
+ const MAX_STACK_SIZE = 99
+ 
+ @export var item_data: ItemData
+-@export_range(1, MAX_STACK_SIZE) var quantity: int = 1
++@export_range(1, MAX_STACK_SIZE) var quantity: int = 1:
++	set = set_quantity
++
++
++func set_quantity(value):
++	quantity = value
++	if quantity > 1 and not item_data.stackable:
++		quantity = 1
++		push_error("%s is not stackable, setting quantity to 1" % item_data.name)
+diff --git a/scenes/player/player.gd b/scenes/player/player.gd
+index 7313764..576cdbf 100644
+--- a/scenes/player/player.gd
++++ b/scenes/player/player.gd
+@@ -20,7 +20,6 @@ func _enter_tree():
+ func _ready():
+ 	ToolManager.tool_selected.connect(_on_tool_selected)
+ 
+-
+ func _on_tool_selected(tool: DataTypes.Tools):
+ 	current_tool = tool
+ 	hit_component.current_tool = tool
+diff --git a/scenes/ui/inventory.gd b/scenes/ui/inventory.gd
+new file mode 100644
+index 0000000..ffaaca3
+--- /dev/null
++++ b/scenes/ui/inventory.gd
+@@ -0,0 +1,23 @@
++extends PanelContainer
++
++const slot = preload("res://scenes/ui/slot.tscn")
++
++@onready var item_grid: GridContainer = %ItemGrid
++
++
++func _ready():
++	var inv_data = preload("res://components/inventory.tres")
++	populate_item_grid(inv_data.slot_datas)
++
++
++func populate_item_grid(slot_datas: Array[SlotData]) -> void:
++	print(slot_datas)
++	for child in item_grid.get_children():
++		child.queue_free()
++
++	for slot_data in slot_datas:
++		var new_slot = slot.instantiate()
++		item_grid.add_child(new_slot)
++
++		if slot_data:
++			new_slot.set_slot_data(slot_data)
+diff --git a/scenes/ui/inventory.tscn b/scenes/ui/inventory.tscn
+index 9ecc639..a31ddd9 100644
+--- a/scenes/ui/inventory.tscn
++++ b/scenes/ui/inventory.tscn
+@@ -1,8 +1,11 @@
+-[gd_scene format=3 uid="uid://55pp0lx1omi6"]
++[gd_scene load_steps=2 format=3 uid="uid://55pp0lx1omi6"]
++
++[ext_resource type="Script" path="res://scenes/ui/inventory.gd" id="1_rqro1"]
+ 
+ [node name="Inventory" type="PanelContainer"]
+ offset_right = 40.0
+ offset_bottom = 40.0
++script = ExtResource("1_rqro1")
+ 
+ [node name="MarginContainer" type="MarginContainer" parent="."]
+ layout_mode = 2
+@@ -12,5 +15,6 @@ theme_override_constants/margin_right = 8
+ theme_override_constants/margin_bottom = 8
+ 
+ [node name="ItemGrid" type="GridContainer" parent="MarginContainer"]
++unique_name_in_owner = true
+ layout_mode = 2
+ columns = 6
+diff --git a/scenes/ui/slot.gd b/scenes/ui/slot.gd
+new file mode 100644
+index 0000000..7f67f4a
+--- /dev/null
++++ b/scenes/ui/slot.gd
+@@ -0,0 +1,14 @@
++extends PanelContainer
++
++@onready var texture_rect: TextureRect = $MarginContainer/TextureRect
++@onready var quantity_label: Label = $QuantityLabel
++
++
++func set_slot_data(slot_data: SlotData) -> void:
++	var item_data = slot_data.item_data
++	texture_rect.texture = item_data.texture
++	tooltip_text = "%s\n%s" % [item_data.name, item_data.description]
++
++	if slot_data.quantity > 1:
++		quantity_label.text = "x%s" % slot_data.quantity
++		quantity_label.show()
+diff --git a/scenes/ui/slot.tscn b/scenes/ui/slot.tscn
+index 7715a98..cce2889 100644
+--- a/scenes/ui/slot.tscn
++++ b/scenes/ui/slot.tscn
+@@ -1,12 +1,13 @@
+ [gd_scene load_steps=3 format=3 uid="uid://cjfyuvxmw6d82"]
+ 
+-[ext_resource type="Texture2D" uid="uid://q1l23w0m8mh" path="res://icon.svg" id="1_1kpbd"]
++[ext_resource type="Script" path="res://scenes/ui/slot.gd" id="1_pr2fk"]
+ [ext_resource type="FontFile" uid="uid://dluso7mhnt55x" path="res://arts/pixelFont-7-8x14-sproutLands.ttf" id="2_h7y5g"]
+ 
+ [node name="Slot" type="PanelContainer"]
+ custom_minimum_size = Vector2(32, 32)
+ offset_right = 40.0
+ offset_bottom = 40.0
++script = ExtResource("1_pr2fk")
+ 
+ [node name="MarginContainer" type="MarginContainer" parent="."]
+ layout_mode = 2
+@@ -17,7 +18,6 @@ theme_override_constants/margin_bottom = 4
+ 
+ [node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+ layout_mode = 2
+-texture = ExtResource("1_1kpbd")
+ expand_mode = 1
+ stretch_mode = 5
+ 
+@@ -27,5 +27,4 @@ size_flags_horizontal = 8
+ size_flags_vertical = 0
+ theme_override_fonts/font = ExtResource("2_h7y5g")
+ theme_override_font_sizes/font_size = 18
+-text = "x99"
+ vertical_alignment = 2

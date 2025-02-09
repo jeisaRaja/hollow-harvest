@@ -34,6 +34,7 @@ func spawn_player(id):
 	var player_instance = player_scene.instantiate() as Player
 	player_instance.name = str(id)
 	player_instance.position = get_spawn_point()
+	GameplayEvent.player = player_instance
 	return player_instance
 
 

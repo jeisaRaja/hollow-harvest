@@ -4,6 +4,7 @@ extends Character
 @export var player_camera: PackedScene
 @export var movement: PlayerMovementComponent
 @export var hit_component: HitComponent
+@export var inventory_data: InventoryData
 
 var owner_id = 1
 var camera_instance: Camera2D
@@ -19,6 +20,7 @@ func _enter_tree():
 
 func _ready():
 	ToolManager.tool_selected.connect(_on_tool_selected)
+
 
 func _on_tool_selected(tool: DataTypes.Tools):
 	current_tool = tool

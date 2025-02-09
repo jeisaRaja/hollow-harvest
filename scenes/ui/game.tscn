@@ -1,14 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://yt8ognp4raow"]
+[gd_scene load_steps=6 format=3 uid="uid://yt8ognp4raow"]
 
-[ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_mmqqp"]
-[ext_resource type="PackedScene" uid="uid://dwee5a4nroc6w" path="res://scenes/world.tscn" id="2_r7rji"]
-[ext_resource type="PackedScene" uid="uid://ftdtgk17m5yy" path="res://scenes/ui/day_night_panel.tscn" id="3_dg2qa"]
-[ext_resource type="PackedScene" uid="uid://bh8pj4pnorf2x" path="res://scenes/ui/tools_panel.tscn" id="4_x2ymn"]
+[ext_resource type="Script" path="res://scenes/ui/game.gd" id="1_eleug"]
+[ext_resource type="PackedScene" uid="uid://dwee5a4nroc6w" path="res://scenes/world.tscn" id="2_6oojn"]
+[ext_resource type="PackedScene" uid="uid://ftdtgk17m5yy" path="res://scenes/ui/day_night_panel.tscn" id="3_dfwjs"]
+[ext_resource type="PackedScene" uid="uid://bh8pj4pnorf2x" path="res://scenes/ui/tools_panel.tscn" id="4_cj2n2"]
+[ext_resource type="PackedScene" uid="uid://55pp0lx1omi6" path="res://scenes/ui/inventory.tscn" id="5_mp8or"]
 
-[node name="Menu" type="Node" node_paths=PackedStringArray("level_container", "ui", "ip_line_edit", "status_label", "not_connected_ui", "host_ui", "on_game_ui")]
-script = ExtResource("1_mmqqp")
+[node name="Game" type="Node" node_paths=PackedStringArray("level_container", "ui", "ip_line_edit", "status_label", "not_connected_ui", "host_ui", "on_game_ui")]
+script = ExtResource("1_eleug")
 level_container = NodePath("Level")
-level_scene = ExtResource("2_r7rji")
+level_scene = ExtResource("2_6oojn")
 ui = NodePath("UI")
 ip_line_edit = NodePath("UI/NotConnected/HBoxContainer/TextEdit")
 status_label = NodePath("UI/StatusLabel")
@@ -93,14 +94,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DayNightPanel" parent="CanvasLayer/OnGame" instance=ExtResource("3_dg2qa")]
+[node name="DayNightPanel" parent="CanvasLayer/OnGame" instance=ExtResource("3_dfwjs")]
 layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_right = 88.0
 
-[node name="ToolsPanel" parent="CanvasLayer/OnGame" instance=ExtResource("4_x2ymn")]
+[node name="ToolsPanel" parent="CanvasLayer/OnGame" instance=ExtResource("4_cj2n2")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -109,6 +110,17 @@ offset_top = -32.0
 offset_right = 88.0
 offset_bottom = 0.0
 grow_vertical = 0
+
+[node name="InventoryUI" type="Control" parent="CanvasLayer/OnGame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Inventory" parent="CanvasLayer/OnGame/InventoryUI" instance=ExtResource("5_mp8or")]
+layout_mode = 0
 
 [connection signal="pressed" from="UI/NotConnected/HBoxContainer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="UI/NotConnected/HBoxContainer/Join" to="." method="_on_join_pressed"]

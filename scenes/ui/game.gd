@@ -10,6 +10,7 @@ extends Node
 @export var not_connected_ui: Control
 @export var host_ui: Control
 @export var on_game_ui: Control
+@export var inventory_ui: Control
 
 
 func _ready():
@@ -78,3 +79,7 @@ func hide_menu():
 func show_menu():
 	ui.hide()
 	not_connected_ui.show()
+
+
+func _on_player_spawned(peer_id: int):
+	print("player spawned: " + str(peer_id))
