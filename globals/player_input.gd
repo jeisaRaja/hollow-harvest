@@ -9,6 +9,9 @@ func _process(_delta):
 	else:
 		direction = Vector2.ZERO
 
+	if Input.is_action_just_pressed("inventory"):
+		GameplayEvent.inventory_toggled.emit()
+
 
 func use_tool() -> bool:
 	var use_tool_value: bool = Input.is_action_just_pressed("hit")

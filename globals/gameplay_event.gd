@@ -1,6 +1,7 @@
 extends Node
 signal player_spawned(peer_id)
 signal player_added
+signal inventory_toggled
 
 var player: Player:
 	set = set_player
