@@ -3,5 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://bgtd7f4w1noxi" path="res://arts/small_objects.png" id="1_0xbk2"]
 
 [resource]
+resource_local_to_scene = true
 atlas = ExtResource("1_0xbk2")
-region = Rect2(0, 0, 16, 16)
+region = Rect2(0, 16, 32, 16)

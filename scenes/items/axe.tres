@@ -1,11 +1,16 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://cxtgcmy7u0kgw"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://cxtgcmy7u0kgw"]
 
 [ext_resource type="Script" path="res://resources/item_data.gd" id="1_adynd"]
-[ext_resource type="Texture2D" uid="uid://b3ss6vq2ki1om" path="res://scenes/items/small_objects.tres" id="2_1mkkd"]
+[ext_resource type="Texture2D" uid="uid://bgtd7f4w1noxi" path="res://arts/small_objects.png" id="2_53yjw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cuto"]
+atlas = ExtResource("2_53yjw")
+region = Rect2(0, 0, 16, 16)
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_adynd")
 name = "Axe"
 description = "Used to cut trees"
 stackable = false
-texture = ExtResource("2_1mkkd")
+texture = SubResource("AtlasTexture_8cuto")

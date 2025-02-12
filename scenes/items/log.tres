@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b3ss6vq2ki1om" path="res://scenes/items/small_objects.tres" id="2_g0ben"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_mmxq6")
 name = "Log"
 description = "A Log"

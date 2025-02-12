@@ -5,20 +5,8 @@ const slot = preload("res://scenes/ui/slot.tscn")
 @onready var item_grid: GridContainer = %ItemGrid
 
 
-func _ready():
-	GameplayEvent.player_added.connect(_on_player_added)
-
-
-func _on_player_added():
-	set_player_inventory_data(GameplayEvent.player.inventory_data)
-
-
-func _on_inventory_interacted(inventory_data: InventoryData, index: int, button: int):
-	print("%s %s %s" % [inventory_data, index, button])
-
-
 func set_player_inventory_data(inventory_data: InventoryData):
-	inventory_data.inventory_interacted.connect(_on_inventory_interacted)
+	inventory_data.inventory_updated.connect(populate_item_grid)
 	populate_item_grid(inventory_data)
 
 
