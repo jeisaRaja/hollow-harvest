@@ -10,4 +10,3 @@ var player: Player:
 func set_player(value):
 	player = value
 	player_added.emit(int(player.name.to_int()))
-	print("calling player added")

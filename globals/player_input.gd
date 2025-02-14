@@ -14,8 +14,7 @@ func _process(_delta):
 
 
 func use_tool() -> bool:
-	var use_tool_value: bool = Input.is_action_just_pressed("hit")
-	return use_tool_value
+	return Input.is_action_just_pressed("hit")
 
 
 func lock():
