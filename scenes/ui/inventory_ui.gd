@@ -2,6 +2,7 @@ extends Control
 
 @onready var player_inventory = $PlayerInventory
 @onready var grabbed_slot = $GrabbedSlot
+@onready var hotbar = $Hotbar as Hotbar
 var grabbed_slot_data: SlotData
 
 
@@ -18,13 +19,16 @@ func _physics_process(_delta):
 func _on_player_added(peer_id):
 	if peer_id == multiplayer.get_unique_id():
 		set_player_inventory_data(GameplayEvent.player.inventory_data)
+		hotbar.set_inventory_data(GameplayEvent.player.inventory_data)
 
 
 func _on_inventory_toggled():
-	visible = not visible
-	if visible:
+	player_inventory.visible = not player_inventory.visible
+	if player_inventory.visible:
+		hotbar.hide()
 		PlayerInput.lock()
 	else:
+		hotbar.show()
 		PlayerInput.unlock()
 
 

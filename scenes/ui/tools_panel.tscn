@@ -1,34 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bh8pj4pnorf2x"]
+[gd_scene load_steps=9 format=3 uid="uid://bh8pj4pnorf2x"]
 
-[ext_resource type="Texture2D" uid="uid://m270abpwidgs" path="res://arts/style.png" id="1_v6hw4"]
+[ext_resource type="Theme" uid="uid://c533jl7wv6wat" path="res://scenes/ui/style.tres" id="1_8yx5k"]
 [ext_resource type="Texture2D" uid="uid://bgtd7f4w1noxi" path="res://arts/small_objects.png" id="2_6env6"]
 [ext_resource type="Script" path="res://scenes/ui/tools_panel.gd" id="2_c20w2"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8c3h1"]
-atlas = ExtResource("1_v6hw4")
-region = Rect2(6, 38, 20, 21)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ravon"]
-texture = SubResource("AtlasTexture_8c3h1")
-texture_margin_left = 4.0
-texture_margin_top = 4.0
-texture_margin_right = 4.0
-texture_margin_bottom = 4.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tt2w5"]
-atlas = ExtResource("1_v6hw4")
-region = Rect2(5, 38, 22, 21)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ooq4f"]
-texture = SubResource("AtlasTexture_tt2w5")
-texture_margin_left = 4.0
-texture_margin_top = 4.0
-texture_margin_right = 4.0
-texture_margin_bottom = 4.0
-
-[sub_resource type="Theme" id="Theme_2phra"]
-Button/styles/normal = SubResource("StyleBoxTexture_ravon")
-PanelContainer/styles/panel = SubResource("StyleBoxTexture_ooq4f")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xionp"]
 atlas = ExtResource("2_6env6")
@@ -51,7 +25,7 @@ region = Rect2(32, 0, 16, 16)
 [node name="ToolsPanel" type="PanelContainer"]
 offset_right = 68.0
 offset_bottom = 32.0
-theme = SubResource("Theme_2phra")
+theme = ExtResource("1_8yx5k")
 script = ExtResource("2_c20w2")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

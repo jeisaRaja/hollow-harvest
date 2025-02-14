@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://55pp0lx1omi6"]
+[gd_scene load_steps=3 format=3 uid="uid://55pp0lx1omi6"]
 
+[ext_resource type="Theme" uid="uid://c533jl7wv6wat" path="res://scenes/ui/style.tres" id="1_12i0a"]
 [ext_resource type="Script" path="res://scenes/ui/inventory.gd" id="1_rqro1"]
 
 [node name="Inventory" type="PanelContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("1_12i0a")
 script = ExtResource("1_rqro1")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

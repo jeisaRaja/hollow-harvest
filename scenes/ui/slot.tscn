@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjfyuvxmw6d82"]
+[gd_scene load_steps=4 format=3 uid="uid://cjfyuvxmw6d82"]
 
+[ext_resource type="Theme" uid="uid://c533jl7wv6wat" path="res://scenes/ui/style.tres" id="1_65yng"]
 [ext_resource type="Script" path="res://scenes/ui/slot.gd" id="1_pr2fk"]
 [ext_resource type="FontFile" uid="uid://dluso7mhnt55x" path="res://arts/pixelFont-7-8x14-sproutLands.ttf" id="2_h7y5g"]
 
@@ -7,6 +8,7 @@
 custom_minimum_size = Vector2(32, 32)
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("1_65yng")
 script = ExtResource("1_pr2fk")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

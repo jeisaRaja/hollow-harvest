@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://scenes/ui/game.gd" id="1_eleug"]
 [ext_resource type="PackedScene" uid="uid://dwee5a4nroc6w" path="res://scenes/world.tscn" id="2_6oojn"]
 [ext_resource type="PackedScene" uid="uid://ftdtgk17m5yy" path="res://scenes/ui/day_night_panel.tscn" id="3_dfwjs"]
-[ext_resource type="PackedScene" uid="uid://bh8pj4pnorf2x" path="res://scenes/ui/tools_panel.tscn" id="4_cj2n2"]
 [ext_resource type="PackedScene" uid="uid://55pp0lx1omi6" path="res://scenes/ui/inventory.tscn" id="5_mp8or"]
 [ext_resource type="Script" path="res://scenes/ui/inventory_ui.gd" id="5_wwbow"]
 [ext_resource type="PackedScene" uid="uid://cjfyuvxmw6d82" path="res://scenes/ui/slot.tscn" id="7_4mk3e"]
+[ext_resource type="PackedScene" uid="uid://dcu3jh0f2lk2t" path="res://scenes/ui/hotbar.tscn" id="7_5vb4x"]
 
 [node name="Game" type="Node" node_paths=PackedStringArray("level_container", "ui", "ip_line_edit", "status_label", "not_connected_ui", "host_ui", "on_game_ui")]
 script = ExtResource("1_eleug")
@@ -103,18 +103,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 offset_right = 88.0
 
-[node name="ToolsPanel" parent="CanvasLayer/OnGame" instance=ExtResource("4_cj2n2")]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -32.0
-offset_right = 88.0
-offset_bottom = 0.0
-grow_vertical = 0
-
 [node name="InventoryUI" type="Control" parent="CanvasLayer/OnGame"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -126,6 +115,7 @@ grow_vertical = 2
 script = ExtResource("5_wwbow")
 
 [node name="PlayerInventory" parent="CanvasLayer/OnGame/InventoryUI" instance=ExtResource("5_mp8or")]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -142,6 +132,18 @@ grow_vertical = 2
 [node name="GrabbedSlot" parent="CanvasLayer/OnGame/InventoryUI" instance=ExtResource("7_4mk3e")]
 visible = false
 layout_mode = 0
+
+[node name="Hotbar" parent="CanvasLayer/OnGame/InventoryUI" instance=ExtResource("7_5vb4x")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = 103.0
+offset_right = -172.0
+offset_bottom = 135.0
+grow_vertical = 0
 
 [connection signal="pressed" from="UI/NotConnected/HBoxContainer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="UI/NotConnected/HBoxContainer/Join" to="." method="_on_join_pressed"]
