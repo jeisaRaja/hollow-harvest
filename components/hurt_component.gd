@@ -1,7 +1,7 @@
 class_name HurtComponent
 extends Area2D
 
-@export var tool: DataTypes.Tools = DataTypes.Tools.None
+@export var tool: DataTypes.Items = DataTypes.Items.None
 
 signal on_hurt
 

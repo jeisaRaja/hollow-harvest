@@ -15,7 +15,7 @@ var distance: float
 
 func _input(event):
 	if event.is_action_pressed("hit"):
-		if ToolManager.selected_tool == DataTypes.Tools.TillGround:
+		if ToolManager.selected_item == DataTypes.Items.TillGround:
 			get_cell_under_mouse()
 			add_tilled_soil_cell()
 

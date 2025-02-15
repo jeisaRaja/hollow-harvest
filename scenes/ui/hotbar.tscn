@@ -9,11 +9,12 @@ offset_right = 8.0
 offset_bottom = 8.0
 theme = ExtResource("1_ub3a1")
 script = ExtResource("2_jy3bl")
-slot_button = ExtResource("3_wf6a7")
+hotbar_item = ExtResource("3_wf6a7")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2

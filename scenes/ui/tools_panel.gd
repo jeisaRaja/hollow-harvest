@@ -1,13 +1,13 @@
 extends PanelContainer
 
 
-func _on_tool_till_pressed():
-	ToolManager.select_tool(DataTypes.Tools.TillGround)
+func _on_item_till_pressed():
+	ToolManager.select_item(DataTypes.Items.TillGround)
 
 
-func _on_tool_pickaxe_pressed():
-	ToolManager.select_tool(DataTypes.Tools.PickAxe)
+func _on_item_pickaxe_pressed():
+	ToolManager.select_item(DataTypes.Items.PickAxe)
 
 
-func _on_tool_axe_pressed():
-	ToolManager.select_tool(DataTypes.Tools.AxeWood)
+func _on_item_axe_pressed():
+	ToolManager.select_item(DataTypes.Items.AxeWood)

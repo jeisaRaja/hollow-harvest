@@ -10,3 +10,8 @@ var player: Player:
 func set_player(value):
 	player = value
 	player_added.emit(int(player.name.to_int()))
+
+
+func slot_datas():
+	if player:
+		return player.inventory_data.slot_datas

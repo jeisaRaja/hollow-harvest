@@ -19,10 +19,10 @@ func _enter_tree():
 
 
 func _ready():
-	ToolManager.tool_selected.connect(_on_tool_selected)
+	ToolManager.item_selected.connect(_on_item_selected)
 
 
-func _on_tool_selected(tool: DataTypes.Tools):
+func _on_item_selected(tool: DataTypes.Items):
 	current_tool = tool
 	hit_component.current_tool = tool
 

@@ -1,11 +1,15 @@
 class_name DataTypes
 
-enum Tools {
+enum Items {
 	None,
 	AxeWood,
 	PickAxe,
 	TillGround,
+	Sword,
 	WaterCrops,
+	Log,
+	Stone,
+	IronOre,
 }
 
 enum ItemType {

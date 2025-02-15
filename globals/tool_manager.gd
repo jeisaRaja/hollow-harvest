@@ -1,10 +1,10 @@
 extends Node
 
-var selected_tool: DataTypes.Tools = DataTypes.Tools.None
+var selected_item: DataTypes.Items = DataTypes.Items.None
 
-signal tool_selected(tool: DataTypes.Tools)
+signal item_selected(item: DataTypes.Items)
 
 
-func select_tool(tool: DataTypes.Tools):
-	tool_selected.emit(tool)
-	selected_tool = tool
+func select_item(item: DataTypes.Items):
+	item_selected.emit(item)
+	selected_item = item
