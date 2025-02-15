@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bu815t3v5ayso"
-path="res://.godot/imported/Varnished.ttf-d311175c5ed38a5629fd7e1310907116.fontdata"
+uid="uid://cg2urwl0us86g"
+path="res://.godot/imported/m5x7.ttf-3e8eddd401f7ba3aa57bfbde6d117bf7.fontdata"
 
 [deps]
 
-source_file="res://arts/Varnished.ttf"
-dest_files=["res://.godot/imported/Varnished.ttf-d311175c5ed38a5629fd7e1310907116.fontdata"]
+source_file="res://arts/m5x7.ttf"
+dest_files=["res://.godot/imported/m5x7.ttf-3e8eddd401f7ba3aa57bfbde6d117bf7.fontdata"]
 
 [params]
 
@@ -16,7 +16,7 @@ Rendering=null
 antialiasing=0
 generate_mipmaps=true
 disable_embedded_bitmaps=true
-multichannel_signed_distance_field=true
+multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
 allow_system_fallback=true

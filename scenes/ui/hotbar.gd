@@ -25,5 +25,8 @@ func populate_hotbar(inventory_data: InventoryData) -> void:
 
 func _on_hotbar_item_pressed(index: int):
 	var data = GameplayEvent.slot_datas()[index] as SlotData
+	if not data:
+		ToolManager.select_item(DataTypes.Items.None)
+		return
 
 	ToolManager.select_item(data.item_data.item_type)

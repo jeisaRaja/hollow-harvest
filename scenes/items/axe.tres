@@ -12,6 +12,6 @@ resource_local_to_scene = true
 script = ExtResource("1_adynd")
 name = "Axe"
 item_type = 1
-description = "Used to cut trees"
+description = "A sturdy, well-worn axe perfect for chopping wood. Essential for gathering lumber, clearing fallen branches, and even breaking small stumps."
 stackable = false
 texture = SubResource("AtlasTexture_8cuto")

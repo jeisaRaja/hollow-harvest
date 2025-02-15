@@ -5,11 +5,10 @@
 [ext_resource type="Resource" uid="uid://bvmdbohn6224w" path="res://scenes/items/log.tres" id="3_lfisw"]
 [ext_resource type="Resource" uid="uid://cxtgcmy7u0kgw" path="res://scenes/items/axe.tres" id="4_e7pk6"]
 
-[sub_resource type="Resource" id="Resource_8n2vj"]
-resource_local_to_scene = true
+[sub_resource type="Resource" id="Resource_1xcvb"]
 script = ExtResource("2_l2i1e")
-item_data = ExtResource("3_lfisw")
-quantity = 4
+item_data = ExtResource("4_e7pk6")
+quantity = 1
 
 [sub_resource type="Resource" id="Resource_83bky"]
 script = ExtResource("2_l2i1e")
@@ -23,4 +22,4 @@ quantity = 4
 
 [resource]
 script = ExtResource("1_y2m2l")
-slot_datas = Array[ExtResource("2_l2i1e")]([SubResource("Resource_8n2vj"), null, null, SubResource("Resource_83bky"), null, null, SubResource("Resource_vt8ty"), null, null, null, null, null])
+slot_datas = Array[ExtResource("2_l2i1e")]([SubResource("Resource_1xcvb"), null, SubResource("Resource_83bky"), null, null, SubResource("Resource_vt8ty"), null, null, null, null, null, null, null, null, null, null, null, null])

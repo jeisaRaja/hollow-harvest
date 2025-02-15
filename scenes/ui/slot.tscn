@@ -1,15 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjfyuvxmw6d82"]
+[gd_scene load_steps=5 format=3 uid="uid://cjfyuvxmw6d82"]
 
 [ext_resource type="Theme" uid="uid://c533jl7wv6wat" path="res://scenes/ui/style.tres" id="1_65yng"]
 [ext_resource type="Script" path="res://scenes/ui/slot.gd" id="1_pr2fk"]
 [ext_resource type="FontFile" uid="uid://dluso7mhnt55x" path="res://arts/pixelFont-7-8x14-sproutLands.ttf" id="2_h7y5g"]
+[ext_resource type="PackedScene" uid="uid://rhawosdt5co4" path="res://scenes/ui/tooltip.tscn" id="3_gifps"]
 
 [node name="Slot" type="PanelContainer"]
 custom_minimum_size = Vector2(24, 24)
 offset_right = 40.0
 offset_bottom = 40.0
+tooltip_text = "Haloo guys
+"
 theme = ExtResource("1_65yng")
 script = ExtResource("1_pr2fk")
+tooltip_scene = ExtResource("3_gifps")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
