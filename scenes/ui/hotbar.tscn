@@ -2,14 +2,14 @@
 
 [ext_resource type="Theme" uid="uid://c533jl7wv6wat" path="res://scenes/ui/style.tres" id="1_ub3a1"]
 [ext_resource type="Script" path="res://scenes/ui/hotbar.gd" id="2_jy3bl"]
-[ext_resource type="PackedScene" uid="uid://cjfyuvxmw6d82" path="res://scenes/ui/slot.tscn" id="3_51jdy"]
+[ext_resource type="PackedScene" uid="uid://61cblgc4mde1" path="res://scenes/ui/slot_button.tscn" id="3_wf6a7"]
 
 [node name="Hotbar" type="PanelContainer"]
-offset_right = 68.0
-offset_bottom = 32.0
+offset_right = 8.0
+offset_bottom = 8.0
 theme = ExtResource("1_ub3a1")
 script = ExtResource("2_jy3bl")
-slot = ExtResource("3_51jdy")
+slot_button = ExtResource("3_wf6a7")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

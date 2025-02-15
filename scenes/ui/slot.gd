@@ -1,3 +1,4 @@
+class_name Slot
 extends PanelContainer
 
 signal slot_clicked(index: int, button: int)

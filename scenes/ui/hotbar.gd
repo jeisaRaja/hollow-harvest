@@ -1,7 +1,7 @@
 class_name Hotbar
 extends PanelContainer
 
-@export var slot: PackedScene
+@export var slot_button: PackedScene
 @onready var hbox = %HBoxContainer as Control
 
 
@@ -15,8 +15,8 @@ func populate_hotbar(inventory_data: InventoryData) -> void:
 		child.queue_free()
 
 	for slot_data in inventory_data.slot_datas.slice(0, 6):
-		var new_slot = slot.instantiate()
-		hbox.add_child(new_slot)
+		var new_slot_button = slot_button.instantiate() as SlotButton
+		hbox.add_child(new_slot_button)
 
 		if slot_data:
-			new_slot.set_slot_data(slot_data)
+			new_slot_button.set_slot_data(slot_data)
