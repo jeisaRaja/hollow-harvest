@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://d1aonlwlemy33"]
+
+[ext_resource type="Script" path="res://resources/item_data.gd" id="1_aiddj"]
+[ext_resource type="Texture2D" uid="uid://bgtd7f4w1noxi" path="res://arts/small_objects.png" id="2_68efv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8lyt"]
+resource_local_to_scene = true
+atlas = ExtResource("2_68efv")
+region = Rect2(32, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_aiddj")
+name = "TillGround"
+item_type = 3
+description = ""
+stackable = false
+texture = SubResource("AtlasTexture_h8lyt")
