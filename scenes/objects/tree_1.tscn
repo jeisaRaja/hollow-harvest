@@ -1,11 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://dv1tw8jny5a7h"]
+[gd_scene load_steps=12 format=3 uid="uid://dv1tw8jny5a7h"]
 
 [ext_resource type="Texture2D" uid="uid://cfqaj8xdjvf1t" path="res://arts/trees.png" id="1_lcr1a"]
 [ext_resource type="Shader" path="res://scenes/objects/tree_shake.gdshader" id="1_yhmqj"]
 [ext_resource type="PackedScene" uid="uid://dmy0b6ck6f7lb" path="res://components/hurt_component.tscn" id="2_7otqi"]
 [ext_resource type="Script" path="res://scenes/objects/tree_1.gd" id="2_xtnx1"]
 [ext_resource type="PackedScene" uid="uid://bkf8tfam7wxdn" path="res://components/damage_component.tscn" id="3_mqsi2"]
-[ext_resource type="PackedScene" uid="uid://27tjvv4hx3ea" path="res://scenes/items/log.tscn" id="4_n7440"]
+[ext_resource type="PackedScene" uid="uid://bffo0kc08ii38" path="res://scenes/items/collectable.tscn" id="4_rkei5"]
+[ext_resource type="Texture2D" uid="uid://b3ss6vq2ki1om" path="res://scenes/items/small_objects.tres" id="5_p6w7o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iay77"]
 resource_local_to_scene = true
@@ -28,7 +29,8 @@ material = SubResource("ShaderMaterial_iay77")
 texture = SubResource("AtlasTexture_pdry3")
 offset = Vector2(0, -32)
 script = ExtResource("2_xtnx1")
-log_scene = ExtResource("4_n7440")
+collectable_scene = ExtResource("4_rkei5")
+collectable_texture = ExtResource("5_p6w7o")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, -18)

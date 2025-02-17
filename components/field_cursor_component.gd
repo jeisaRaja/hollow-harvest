@@ -1,7 +1,7 @@
 class_name FieldCursorComponent
 extends Node
 
-@export var grass_tilemap_layer: TileMapLayer
+@export var dirt_tilemap_layer: TileMapLayer
 @export var tilled_soil_tilemap_layer: TileMapLayer
 @export var terrain_set: int = 0
 @export var terrain: int = 2
@@ -21,10 +21,10 @@ func _input(event):
 
 
 func get_cell_under_mouse() -> void:
-	mouse_position = grass_tilemap_layer.get_local_mouse_position()
-	cell_position = grass_tilemap_layer.local_to_map(mouse_position)
-	cell_source_id = grass_tilemap_layer.get_cell_source_id(cell_position)
-	local_cell_position = grass_tilemap_layer.map_to_local(cell_position)
+	mouse_position = dirt_tilemap_layer.get_local_mouse_position()
+	cell_position = dirt_tilemap_layer.local_to_map(mouse_position)
+	cell_source_id = dirt_tilemap_layer.get_cell_source_id(cell_position)
+	local_cell_position = dirt_tilemap_layer.map_to_local(cell_position)
 	distance = GameplayEvent.player.global_position.distance_to(local_cell_position)
 
 

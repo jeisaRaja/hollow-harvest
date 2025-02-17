@@ -1,6 +1,7 @@
 extends Sprite2D
 
-@export var log_scene: PackedScene
+@export var collectable_scene: PackedScene
+@export var collectable_texture: Texture
 
 @onready var hurt_component: HurtComponent = $HurtComponent
 @onready var damage_component: DamageComponent = $DamageComponent
@@ -24,7 +25,8 @@ func _on_max_damaged_reached():
 
 @rpc("any_peer", "call_local", "reliable")
 func add_log_scene() -> void:
-	var log_instance = log_scene.instantiate() as Node2D
+	var log_instance = collectable_scene.instantiate() as Sprite2D
 	log_instance.global_position = global_position
+	log_instance.texture = collectable_texture
 	get_parent().add_child(log_instance)
 	queue_free()
