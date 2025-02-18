@@ -1,4 +1,5 @@
 extends Control
+signal slot_data_dropped(slot_data: SlotData)
 
 @onready var player_inventory = $PlayerInventory
 @onready var grabbed_slot = $GrabbedSlot
@@ -57,3 +58,11 @@ func update_grabbed_slot():
 		grabbed_slot.set_slot_data(grabbed_slot_data)
 	else:
 		grabbed_slot.hide()
+
+
+func _on_gui_input(event: InputEvent):
+	if event is InputEventMouseButton and event.is_pressed() and grabbed_slot_data:
+		match event.button_index:
+			MOUSE_BUTTON_LEFT:
+				slot_data_dropped.emit(grabbed_slot_data)
+				print("drop slot data")

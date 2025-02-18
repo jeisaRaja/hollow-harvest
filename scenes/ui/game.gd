@@ -12,6 +12,9 @@ extends Node
 @export var on_game_ui: Control
 @export var inventory_ui: Control
 
+@export_group("Inventory")
+@export var collectable: PackedScene
+
 
 func _ready():
 	on_game_ui.hide()
@@ -83,3 +86,10 @@ func show_menu():
 
 func _on_player_spawned(peer_id: int):
 	print("player spawned: " + str(peer_id))
+
+
+func _on_inventory_ui_slot_data_dropped(slot_data: SlotData):
+	var item = collectable.instantiate() as Collectable
+	item.slot_data = slot_data
+	item.position = GameplayEvent.player.position + Vector2(0, -50)
+	add_child(item)

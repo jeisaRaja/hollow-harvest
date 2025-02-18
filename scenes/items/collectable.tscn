@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bffo0kc08ii38"]
+[gd_scene load_steps=6 format=3 uid="uid://bffo0kc08ii38"]
 
 [ext_resource type="Texture2D" uid="uid://badkoywtaauc3" path="res://arts/log.png" id="1_og3mh"]
 [ext_resource type="PackedScene" uid="uid://bjfgnwf8246se" path="res://components/collectable_component.tscn" id="2_87xd4"]
+[ext_resource type="Script" path="res://scenes/items/collectable.gd" id="2_nik6w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v41xx"]
 atlas = ExtResource("1_og3mh")
@@ -13,6 +14,7 @@ size = Vector2(4, 14)
 [node name="Collectable" type="Sprite2D"]
 texture = SubResource("AtlasTexture_v41xx")
 offset = Vector2(0, -3.985)
+script = ExtResource("2_nik6w")
 
 [node name="CollectableComponent" parent="." instance=ExtResource("2_87xd4")]
 position = Vector2(0, -6)

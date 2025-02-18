@@ -9,8 +9,7 @@
 custom_minimum_size = Vector2(24, 24)
 offset_right = 40.0
 offset_bottom = 40.0
-tooltip_text = "Haloo guys
-"
+tooltip_text = "."
 theme = ExtResource("1_65yng")
 script = ExtResource("1_pr2fk")
 tooltip_scene = ExtResource("3_gifps")

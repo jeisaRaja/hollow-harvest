@@ -34,6 +34,9 @@ func _on_gui_input(event: InputEvent):
 
 
 func _make_custom_tooltip(_for_text):
+	if not title or not description:
+		tooltip_text = ""
+		return null
 	if not tooltip_scene:
 		printerr("tooltip_scene is not assigned!")
 		return null
