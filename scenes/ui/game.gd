@@ -91,5 +91,5 @@ func _on_player_spawned(peer_id: int):
 func _on_inventory_ui_slot_data_dropped(slot_data: SlotData):
 	var item = collectable.instantiate() as Collectable
 	item.slot_data = slot_data
-	item.position = GameplayEvent.player.position + Vector2(0, -50)
+	item.position = GameplayEvent.player.position + Vector2(-20, 0)
 	add_child(item)
