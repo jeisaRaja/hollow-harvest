@@ -89,7 +89,33 @@ func _on_player_spawned(peer_id: int):
 
 
 func _on_inventory_ui_slot_data_dropped(slot_data: SlotData):
-	var item = collectable.instantiate() as Collectable
-	item.slot_data = slot_data
-	item.position = GameplayEvent.player.position + Vector2(-20, 0)
-	add_child(item)
+	if not slot_data or not slot_data.item_data:
+		return
+
+	var item_data_path = slot_data.item_data.resource_path
+	var spawn_position = (
+		GameplayEvent.get_player(multiplayer.get_unique_id()).position + Vector2(-20, 0)
+	)
+
+	instantiate_item.rpc(item_data_path, slot_data.quantity, spawn_position)
+
+
+@rpc("any_peer", "call_local")
+func instantiate_item(item_data_path: String, quantity: int, position: Vector2):
+	if item_data_path.is_empty():
+		print("Invalid item_data path")
+		return
+
+	var item_data = load(item_data_path) as ItemData
+	if not item_data:
+		print("Failed to load item data from path: ", item_data_path)
+		return
+
+	var item_instance = collectable.instantiate() as Collectable
+	var slot_data = SlotData.new()
+	slot_data.item_data = item_data
+	slot_data.quantity = quantity
+	item_instance.position = position
+	item_instance.slot_data = slot_data
+
+	get_parent().add_child(item_instance)

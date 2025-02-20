@@ -18,9 +18,10 @@ func _physics_process(_delta):
 
 
 func _on_player_added(peer_id):
-	if peer_id == multiplayer.get_unique_id():
-		set_player_inventory_data(GameplayEvent.player.inventory_data)
-		hotbar.set_inventory_data(GameplayEvent.player.inventory_data)
+	var player = GameplayEvent.get_player(peer_id)
+	if player and peer_id == multiplayer.get_unique_id():
+		set_player_inventory_data(player.inventory_data)
+		hotbar.set_inventory_data(player.inventory_data)
 
 
 func _on_inventory_toggled():

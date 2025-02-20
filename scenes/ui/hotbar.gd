@@ -24,9 +24,11 @@ func populate_hotbar(inventory_data: InventoryData) -> void:
 
 
 func _on_hotbar_item_pressed(index: int):
-	var data = GameplayEvent.slot_datas()[index] as SlotData
+	var peer_id = multiplayer.get_unique_id()
+	var data: Array[SlotData] = GameplayEvent.slot_datas(peer_id)
+
 	if not data:
 		ToolManager.select_item(DataTypes.Items.None)
 		return
 
-	ToolManager.select_item(data.item_data.item_type)
+	ToolManager.select_item(data[index].item_data.item_type)

@@ -51,7 +51,6 @@ func update_camera_position():
 @rpc("any_peer", "call_local")
 func set_player_position(_position: Vector2):
 	position = _position
-	print(position)
 
 
 func set_up_camera():
