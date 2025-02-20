@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scenes/objects/tree_1.gd" id="2_xtnx1"]
 [ext_resource type="PackedScene" uid="uid://bkf8tfam7wxdn" path="res://components/damage_component.tscn" id="3_mqsi2"]
 [ext_resource type="PackedScene" uid="uid://bffo0kc08ii38" path="res://scenes/items/collectable.tscn" id="4_rkei5"]
-[ext_resource type="Texture2D" uid="uid://b3ss6vq2ki1om" path="res://scenes/items/small_objects.tres" id="5_p6w7o"]
+[ext_resource type="Resource" uid="uid://bvmdbohn6224w" path="res://scenes/items/log.tres" id="5_avyxe"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iay77"]
 resource_local_to_scene = true
@@ -29,8 +29,9 @@ material = SubResource("ShaderMaterial_iay77")
 texture = SubResource("AtlasTexture_pdry3")
 offset = Vector2(0, -32)
 script = ExtResource("2_xtnx1")
+log_amount = 2
 collectable_scene = ExtResource("4_rkei5")
-collectable_texture = ExtResource("5_p6w7o")
+log_item_data = ExtResource("5_avyxe")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, -18)

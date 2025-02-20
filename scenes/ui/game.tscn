@@ -140,10 +140,9 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = -240.0
-offset_top = 103.0
-offset_right = -172.0
-offset_bottom = 135.0
+offset_top = -32.0
+offset_right = 108.0
+offset_bottom = 0.0
 grow_vertical = 0
 
 [connection signal="pressed" from="UI/NotConnected/HBoxContainer/Host" to="." method="_on_host_pressed"]
